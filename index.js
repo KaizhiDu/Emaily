@@ -8,6 +8,7 @@ const keys = require('./config/keys');
 const app = express();
 
 
+//middleware
 app.use(bodyParser.json());
 app.use(
     cookiesSession({
@@ -20,9 +21,12 @@ app.use(passport.session());
 
 
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 const authRoutes = require('./routes/authRoutes')(app);
 const billingRoutes = require('./routes/billingRouters')(app);
+const surveyRoutes = require('./routes/surveyRoutes')(app);
+
 
 mongoose.connect(keys.mongoURI);
 
