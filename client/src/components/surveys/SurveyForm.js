@@ -10,10 +10,10 @@ import {Link} from "react-router-dom";
 // SurveyField is a template of Field
 
 const FIELDS = [
-    {label: 'Survey Title', name: 'surveyTitle'},
-    {label: 'Survey Line', name: 'surveyLine'},
-    {label: 'Email Body', name: 'emailBody'},
-    {label: 'Recipient List', name: 'recipientList'}
+    {label: 'Survey Title', name: 'title'},
+    {label: 'Survey Line', name: 'subject'},
+    {label: 'Email Body', name: 'body'},
+    {label: 'Recipient List', name: 'recipients'}
 ];
 
 class SurveyForm extends Component {
@@ -46,19 +46,19 @@ class SurveyForm extends Component {
 function validate(values) {
     const errors = {};
 
-    errors.recipientList = validateEmails(values.recipientList || '');
+    errors.recipients = validateEmails(values.recipients || '');
 
-    if (!values.surveyTitle) {
-        errors.surveyTitle = "You must provide a title";
+    if (!values.title) {
+        errors.title = "You must provide a title";
     }
-    if (!values.surveyLine) {
-        errors.surveyLine = "You must provide a survey line";
+    if (!values.subject) {
+        errors.subject = "You must provide a survey line";
     }
-    if (!values.emailBody) {
-        errors.emailBody = "You must provide a email body";
+    if (!values.body) {
+        errors.body = "You must provide a email body";
     }
-    if (!values.recipientList) {
-        errors.recipientList = "You must provide at least one recipient";
+    if (!values.recipients) {
+        errors.recipients = "You must provide at least one recipient";
     }
 
     return errors;
@@ -66,5 +66,6 @@ function validate(values) {
 
 export default reduxForm({
     validate,
-    form: 'surveyForm'
+    form: 'surveyForm',
+    destroyOnUnmount: false
 })(SurveyForm);
