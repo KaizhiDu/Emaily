@@ -1,12 +1,2 @@
 node_modules
 config/dev.js
-
-
-
-
-#module.exports = {
-#    googleClientID: '159676567988-e85tnnpqmrmhjf5ut0on79jl5nrd2i7e.apps.googleusercontent.com',
-#    googleClientSecret: 'fOVkhGdNsSXp-70hrL2_NSJX',
-#    mongoURI: 'mongodb+srv://admin-kevin:2wnKt6CRkwyMbngV@emily-o9czr.mongodb.net/emily-prod?retryWrites=true&w=majority',
-#    cookieKey: 'asdfaelqrksaghlaskgjlaskdgjljkjasdfasdf'
-#}

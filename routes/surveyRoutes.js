@@ -9,7 +9,12 @@ const Survey = mongoose.model('surveys');
 module.exports = app => {
 
     app.get('/api/surveys/thanks', (req, res) => {
-       res.send("Thanks for your reply!");
+        res.send("Thanks for your reply!");
+    });
+
+    app.get('/api/surveys', requireLogin, async (req, res) => {
+        const surveys = await Survey.find({_user: req.user.id});
+        res.send(surveys);
     });
 
     app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
@@ -27,7 +32,7 @@ module.exports = app => {
             dateSent: Date.now()
         });
         // After create a survey, we need to send emails
-       // const mailer = new Mailer(survey, surveyTemplate(survey));
+        // const mailer = new Mailer(survey, surveyTemplate(survey));
         try {
             // await mailer.send();
             await survey.save();
